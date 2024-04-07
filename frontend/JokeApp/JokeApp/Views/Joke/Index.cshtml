@@ -1,0 +1,99 @@
+﻿@model Joke
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<link rel="stylesheet" href="~/css/page-heading.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/page-heading.css" asp-append-version="true" />
+<style>
+    .bg-primary {
+        width: 50%;
+        margin: 0 auto;
+        border-color: #007bff;
+    }
+
+    .text-center button {
+		width: 200px;
+	}
+
+    .btn-shadow {
+        border-bottom: 3px solid rgba(0, 128, 128, 1);
+    }
+</style>
+
+<div class="page-heading" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner-content">
+                    <h2>A joke a day keeps the doctor away</h2>
+                    <span>If you joke wrong way, your teeth have to pay. (Serious)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="text-lg-start">
+                @if(Model != null)
+                {
+                    <input type="hidden" id="id" name="id" value="@Model.Id" />
+                    <p id="joke">@Model.Content</p>
+                }
+                else
+                {
+                    <p id="joke">"That's all the jokes for today! Come back another day!"</p>
+                }
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <hr class="bg-primary">
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="text-center">
+                @if (Model != null)
+                {
+                    <form id="jokeForm">
+                        <button id="funny" type="button" class="btn btn-primary rounded-0 btn-block mx-2 btn-shadow" data-isfunny="true">This is Funny!</button>
+                        <button id="notfunny" type="button" class="btn btn-success rounded-0 btn-block mx-2 btn-shadow" data-isfunny="false">This is not funny.</button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#jokeForm button").click(function () {
+            var jokeId = $("input[name='id']").val();
+            var isFunny = $(this).data("isfunny");
+
+            // Gửi yêu cầu AJAX
+            $.ajax({
+                type: "POST",
+                url: "/Joke/NextJoke",
+                data: { id: jokeId, isFunny: isFunny},
+                success: function (response) {
+                    $("#id").val(response.joke.id);
+                    $("#joke").text(response.joke.content);
+                },
+                error: function (xhr, status, error) {
+                    $("#id").val(0);
+                    $("#joke").text("That's all the jokes for today! Come back another day!");
+                    $("#notfunny").hide();
+                    $("#funny").hide();
+                }
+            });
+        });
+    });
+</script>

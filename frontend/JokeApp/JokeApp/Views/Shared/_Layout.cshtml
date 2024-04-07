@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(ViewData["Title"] = "Joke")</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Joke.styles.css" asp-append-version="true" />
+    <style>
+        footer {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container mt-3 mb-3">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2">
+                    <img width="50" height="50" class="rounded-circle img-fluid" src="~/images/th.jfif"></img>
+                </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-2">
+                    <div class="row">
+                        <div class="col-8">
+                            <p style="font-size: 10px; float: right;" class="text-black-50 mt-0 mb-0">Handicrafted by</p>
+                            <p style="float: right;" class="mt-0 mb-0">Jim HLS</p>
+                        </div>
+                        <div class="col-4">
+                            <img width="50" height="50" class="rounded-circle img-fluid float-end" src="~/images/th.jfif"></img>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>
+    </header>
+    <div class="pb-5">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted mb-0">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="text-center px-3">
+                        <p class="text-wrap text-black-50 mb-0" style="line-height: 1; font-size: 12px;">
+                            This website is created as part of Hlsolutions program. The material contained on this website are provided for general information only and do not constitute any form of advice. HLS assumes no responsibility for the accuracy of any particular statement and accepts no liability for any loss of or damage which may arise from reliance on the information contained on this site.
+                        </p>
+                        <span class="text-black mb-0 mt-0">Copyright 2021 HLS</span>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

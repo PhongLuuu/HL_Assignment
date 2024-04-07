@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link rel="stylesheet" href="~/css/page-heading.css" asp-append-version="true" />
+<style>
+    .bg-primary {
+        width: 50%;
+        margin: 0 auto;
+        border-color: #007bff;
+    }
+
+    .text-center button {
+        width: 200px;
+    }
+
+    .btn-shadow {
+        border-bottom: 3px solid rgba(0, 128, 128, 1);
+    }
+</style>
+
+<div class="page-heading" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner-content">
+                    <h2>A joke a day keeps the doctor away</h2>
+                    <span>If you joke wrong way, your teeth have to pay. (Serious)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="text-lg-start">
+                <p>
+                    A child asked his father, "How were people born?" So his father said, "Adam and Eve made babies, then their babies became adults and made babies, and so on." The child then went to his mother, asked her the same question and she told him, "We were monkeys then we evolved to become like we are now." The child ran back to his father and said, "You lied to me!" His father replied, "No, your mom was talking about her side of the family."
+                </p>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <hr class="bg-primary">
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="text-center">
+                <form asp-controller="">
+                    <button type="submit" class="btn btn-primary rounded-0 btn-block mx-2 btn-shadow">This is Funny!</button>
+                    <button type="submit" class="btn btn-success rounded-0 btn-block mx-2 btn-shadow">This is not funny.</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
